@@ -9,7 +9,7 @@ import { CartWidget } from './CartWidget';
 
 
 
-export  function NavBar() {
+export  function NavBar(initial) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static"
@@ -23,7 +23,7 @@ export  function NavBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-           Bookstory
+           Bookstore
           </IconButton>
         
       <div>
