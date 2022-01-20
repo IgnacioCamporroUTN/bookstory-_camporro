@@ -10,7 +10,7 @@ import { Box } from '@mui/system';
 
 
 
-export const ItemCount = (props) => {
+export const ItemCount = ({item}) => {
 
     const [counter, setCounter] = useState(1)
     const add = () => {
@@ -21,23 +21,28 @@ export const ItemCount = (props) => {
         setCounter(counter + -1);
       }
       const disableAdd = () => {
-        return counter >= props.stock ? true : false;
+        return counter >= item.stock ? true : false;
       };
       const disableReduce = () => {
         return counter <= 1 ? true : false;
       };
+      const onAdd=()=>{
+
+        return alert("Usted ha agregado "+counter+ " productos al carrito")
+      }
 
       return(
           <> 
                    
-        <Card sx={{ maxWidth: 345 }}>
-        <img  width="50%" src={props.srcimg}  alt={props.title}/>
+        <Card sx={{ maxWidth: 345, marginTop:5}}>
+       
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {props.title}
+          {item.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-        Dune es una novela de ciencia ficción escrita por Frank Herbert en 1965. Su éxito fue rotundo; en 1966 ganó el Premio Hugo y en 1965 la primera edición del Premio Nébula a la mejor novela de ciencia ficción.
+        <img  width="50%" src={item.srcimg}  alt={item.title}/>
+        <Typography marginTop="10px" variant="body2" color="text.secondary">
+        {item.description}
         </Typography>
       </CardContent>
       <CardActions>
@@ -59,7 +64,7 @@ export const ItemCount = (props) => {
            display='flex'
            alignItems='flex'
            marginLeft='20%'>
-          <Button size="big" >Agregar al carrito</Button>
+          <Button size="big" onClick={onAdd}>Agregar al carrito</Button>
           </Box>
       
       </CardActions>
