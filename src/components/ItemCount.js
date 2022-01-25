@@ -34,7 +34,7 @@ export const ItemCount = ({item}) => {
       return(
           <> 
                    
-        <Card sx={{ maxWidth: 345, marginTop:5}}>
+        <Card sx={{ maxWidth: 345, margin:10, display:'inline-block'}}>
        
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
