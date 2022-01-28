@@ -63,7 +63,7 @@ export const ItemCount = ({item}) => {
            marginLeft='20%'>
           <Button size="big" >
             
-            <Link to="/item/:id">
+            <Link to={`/item/${item.id}`}>
             Ver detalles del producto
             </Link>
            </Button>

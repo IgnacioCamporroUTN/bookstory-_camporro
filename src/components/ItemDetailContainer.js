@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
     })
     
     
-    })
+    },[])
 
   return (
     <div>
