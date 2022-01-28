@@ -6,7 +6,10 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { CartWidget } from './CartWidget';
-
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import { Link } from 'react-router-dom';
 
 
 export  function NavBar(initial) {
@@ -14,7 +17,7 @@ export  function NavBar(initial) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static"
        color="secondary"
-       style={{ background: '#2E3B55' }}>
+       style={{ }}>
         <Toolbar >
           <IconButton
             size="large"
@@ -23,19 +26,37 @@ export  function NavBar(initial) {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-           Bookstore
+             <Link to={"/"}>Bookstore</Link>
+      
           </IconButton>
         
       <div>
-          <Button color="inherit">Productos</Button>
-          <Button color="inherit">Contacto</Button>
-          
-          <Button  color="inherit">
+        <PopupState variant="popover" popupId="demo-popup-menu">
+  {(popupState) => (
+    <React.Fragment>
+      <Button  color="secondary" variant="contained" {...bindTrigger(popupState)}>
+        Categorías
+      </Button>
+      <Menu {...bindMenu(popupState)}>
+        <MenuItem onClick={popupState.close}>
+          <Link to={"/categoria/CienciaFiccion"}>Ciencia Ficción</Link>
+        </MenuItem>
+        <MenuItem onClick={popupState.close}>
+        <Link to={"/categoria/Terror"}>Terror</Link>
+        </MenuItem>
+        <MenuItem onClick={popupState.close}>
+        <Link to={"/categoria/Fantasia"}>Fantasía</Link>
+        </MenuItem>
+        
+      </Menu>
+    </React.Fragment>
+  )}
+</PopupState>
+      </div>
+      <Button  color="inherit">
           <CartWidget color="inherit">Carrito</CartWidget>
           0
-          </Button>
-
-      </div>
+        </Button>
           
                          
        

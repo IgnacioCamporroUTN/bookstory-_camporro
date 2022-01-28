@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
-
+import { Link} from 'react-router-dom';
 
 
 
 export const ItemCount = ({item}) => {
+
 
     const [counter, setCounter] = useState(1)
     const add = () => {
@@ -35,10 +35,9 @@ export const ItemCount = ({item}) => {
           <> 
                    
         <Card sx={{ maxWidth: 345, margin:10, display:'inline-block'}}>
-       
-      <CardContent>
+        <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {item.title}
+        {item.title}   
         </Typography>
         <img  width="50%" src={item.srcimg}  alt={item.title}/>
         <Typography marginTop="10px" variant="body2" color="text.secondary">
@@ -58,8 +57,20 @@ export const ItemCount = ({item}) => {
         
       </CardActions>
 
-      <CardActions>
+      <Box
+           display='flex'
+           alignItems='flex'
+           marginLeft='20%'>
+          <Button size="big" >
+            
+            <Link to="/item/:id">
+            Ver detalles del producto
+            </Link>
+           </Button>
+          </Box>
 
+      <CardActions>
+     
           <Box
            display='flex'
            alignItems='flex'
