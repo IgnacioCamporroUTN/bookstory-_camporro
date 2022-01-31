@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route, useParams, Link } from "react-router-dom";
-
+import { ItemCount } from './ItemCount';
 import { ItemList } from './ItemList';
 
 export const ItemListContainer = (props) => {
-
-
-
-const[listadoDeProductos, setListadoDeProductos]= useState([]);
+ const {category}=useParams();
+ const[listadoDeProductos, setListadoDeProductos]= useState([]);
+//  const[arrayDeProductos, setArrayDeProductos]= useState([]);
 
 useEffect(()=>{
 
@@ -18,14 +17,23 @@ setTimeout(()=>{
     {id:"004", title: 'Carrie', stock: 5, precio:"1500", genero: "Terror", tipo:"Novela", autor:"Stephen King", description:"Carrie tiene su primer período en la ducha en la escuela secundaria. Las otras chicas, poco sensibles, le gritan y le arrojan tampones. Una chica, Sue Snell, se siente mal por toda la cruel escena. Pero, por supuesto, ella no hace nada para detenerlo. Después que la profesora de gimnasia, descubra qué está pasando, castiga a los alborotadores. El líder de los matones luego culpa a Carrie por meterla en problemas. Esta chica, que se llama Chris Hargensen, comienza a planear su venganza. ", srcimg:"https://images.cdn1.buscalibre.com/fit-in/360x360/25/3b/253b35902bbebc059355fa26c19d9dc4.jpg"},])
 })
 
+},[])
 
-})
+
+useEffect(()=>{
+    setListadoDeProductos(listadoDeProductos.filter(item=>item.genero==category))
+},[category])
+
 
 
 
     return (
         <div>
-            <ItemList listadoDeProductos={listadoDeProductos}/>
+           
+                 {
+                listadoDeProductos.map(item=> <ItemCount item={item} /> )
+                 }
+            
         </div>
     )
 }
