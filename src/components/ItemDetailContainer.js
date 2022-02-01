@@ -5,34 +5,31 @@ import { Item } from "./Item.js";
 
 const ItemDetailContainer = () => {
   const [added, setAdded] = useState([]);
-  const {idP}=useParams();
-  const[productos, setProductos]= useState([]);
+  const {id}=useParams();
+  const[producto, setProducto]= useState({});
 
   useEffect(()=>{
     fetch("../json/productos.json")
     .then((res) => res.json())
     .then((datos) => {
-      setProductos(datos);
+      setProducto(datos.find((book)=>book.id===id));
     });
 
     },[]);
 
    const onAdd =(counter)=>{
-     console.log(`Agregaste ${productos.title}, cantidad: ${counter}.`);
+     console.log(`Agregaste ${producto.title}, cantidad: ${counter}.`);
      setAdded(true);
    }
    
 
   return (
     <div>
-     {productos.filter(
-            (item) =>
-              idP == item.id && (
-                <div>
-                  <ItemDetail onAdd={onAdd} item={item} added={added} />
-                </div>
-              )
-          )}         
+     
+     <ItemDetail onAdd={onAdd} item={producto} added={added} />
+     <p>{producto.title}</p>
+               
+                
     </div>
   );
 };
