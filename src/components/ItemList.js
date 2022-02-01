@@ -1,13 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { ItemCount } from './ItemCount';
+import React from 'react'
+import {Item} from './Item.js';
 
-export const ItemList = ({item}) => {
-  
- 
+export const ItemList = ({item, category}) => {
     return (
-        <div >
-               <ItemCount item={item}/>            
+        <div>
+          <ul>
+            <li style={{ listStyle: "none" }}>
+              {item.map((item) =>
+                category ? (
+                  category == item.category && (
+                    <div style={{ display: "inline-block", padding: "10px" }}>
+                      <Item item={item} />
+                    </div>
+                  )
+                ) : (
+                  <div style={{ display: "inline-block", padding: "10px" }}>
+                    <Item item={item} />
+                  </div>
+                )
+              )}
+            </li>
+          </ul>
         </div>
-    )
+      )
 }
