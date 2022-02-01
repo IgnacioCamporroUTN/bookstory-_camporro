@@ -1,15 +1,39 @@
-import React from 'react'
-import { ItemCount } from './ItemCount';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Switch, Route, useParams, Link } from "react-router-dom";
+import { Item } from './Item';
 
 export const ItemListContainer = (props) => {
-    return (
-        <div>
-            <h1>{props.greeting}</h1>
-            <ItemCount 
-             stock='8'
-             initial='1' 
-             srcimg="https://images-na.ssl-images-amazon.com/images/I/41et1gx5B7L._SX324_BO1,204,203,200_.jpg"
-             title="Dune"/>
-        </div>
+ const {category}=useParams();
+ const[listadoDeProductos, setListadoDeProductos]= useState([]);
+//  const[arrayDeProductos, setArrayDeProductos]= useState([]);
+
+useEffect(()=>{
+    fetch("../json/productos.json")
+    .then((response) => response.json())
+    .then((datos) => {
+      setListadoDeProductos(datos);
+    });
+    },[]);
+
+    return ( <div>
+        <ul>
+          <li style={{ listStyle: "none" }}>
+            <h1>{category}</h1>
+            {listadoDeProductos.map((item) =>
+              category ? (
+                category == item.genero && (
+                  <div style={{ display: "inline-block", padding: "10px" }}>
+                    <Item item={item} />
+                  </div>
+                )
+              ) : (
+                <div style={{ display: "inline-block", padding: "10px" }}>
+                  <Item item={item} />
+                </div>
+              )
+            )}
+          </li>
+        </ul>
+      </div>
     )
 }
