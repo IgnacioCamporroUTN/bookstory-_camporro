@@ -20,7 +20,6 @@ export const ItemDetail = ({onAdd, item, added}) => {
             alt={item.title}
             />
             <Button>
-             
             </Button>
             <Box style={{ padding: "10px" ,  width: '50%', display:'inline-block'} }>
               <h1>{item.title}</h1>            
@@ -30,7 +29,7 @@ export const ItemDetail = ({onAdd, item, added}) => {
               <h2>{item.description}</h2>
               <h1>$ {item.precio}</h1>
               <Button size="small" color="primary">
-                <ItemCount stock={item.stock} onAdd={onAdd}></ItemCount>
+              { added ? <Link to="/cart" size="medium">Ir al carrito</Link> : <ItemCount stock={item.stock} onAdd={onAdd}/>}
               </Button>
               
             </Box>

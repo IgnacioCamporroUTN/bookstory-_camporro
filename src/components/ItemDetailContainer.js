@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Item } from "./Item.js";
 
 const ItemDetailContainer = () => {
-  const [added, setAdded] = useState([]);
+  const [added, setAdded] = useState(false);
   const {id}=useParams();
   const[producto, setProducto]= useState({});
 
