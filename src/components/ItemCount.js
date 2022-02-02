@@ -46,7 +46,7 @@ export const ItemCount = ({stock,onAdd}) => {
            display='flex'
            alignItems='flex'
            marginLeft='20%'>
-          <Button size="big" onClick={onAdd}>Agregar al carrito</Button>
+          <Button size="big" onClick={()=>onAdd(counter)}>Agregar al carrito</Button>
           </Box>
       
       </CardActions>
