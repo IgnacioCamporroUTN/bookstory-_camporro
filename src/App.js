@@ -12,19 +12,11 @@ function App() {
      <CartProvider>
          <BrowserRouter>
             <NavBar/>
-            <Switch>
-               <Route exact path="/">
-                  <ItemListContainer/> 
-               </Route>
-               <Route exact path="/categoria/:category">
-                  <ItemListContainer/> 
-               </Route>
-               <Route exact path="/item/:id">
-                  <ItemDetailContainer/> 
-               </Route>
-               <Route exact path="/cart">
-                  <Cart/> 
-               </Route>
+               <Switch>
+                  <Route exact path="/"><ItemListContainer/></Route>
+                  <Route exact path="/categoria/:category"><ItemListContainer/></Route>
+                  <Route exact path="/item/:id"><ItemDetailContainer/></Route>
+                  <Route exact path="/cart"><Cart/></Route>
                </Switch>
          </BrowserRouter>
      </CartProvider>
