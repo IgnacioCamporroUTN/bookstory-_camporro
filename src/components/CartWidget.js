@@ -1,16 +1,17 @@
 import React from 'react'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Button } from '@mui/material';
 
-const stylingCart = {
-   
-   
-  }
 
 
 export const CartWidget = () => {
     return (
         <div>
-            <ShoppingCartIcon style={stylingCart.cart}/>
+        <Button  color="inherit">
+          <ShoppingCartIcon color="inherit">Carrito</ShoppingCartIcon>
+          0
+        </Button>
+   
         </div>
     )
 }

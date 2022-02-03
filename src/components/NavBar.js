@@ -53,10 +53,10 @@ export  function NavBar(initial) {
   )}
 </PopupState>
       </div>
-      <Button  color="inherit">
-          <CartWidget color="inherit">Carrito</CartWidget>
-          0
-        </Button>
+      <Link to={"/cart"}>
+      <CartWidget color="inherit">Carrito</CartWidget>
+      </Link>
+         
           
                          
        
