@@ -19,9 +19,9 @@ export const Cart = () => {
 {cart.length === 0 ?
 <div>
   <h1>Carro vacío</h1>
-  <Button>
+  
   <Link to={"/"}>Volver a la home</Link>
-  </Button>
+  
   
 </div>
 :
