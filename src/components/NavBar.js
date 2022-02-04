@@ -25,8 +25,12 @@ export  function NavBar(initial) {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            text-decoration= "none"
           >
-             <Link to={"/"}>Bookstore</Link>
+            <div  text-decoration= "none">
+            <Link to={"/"} underline="none">Bookstore</Link>
+            </div>
+             
       
           </IconButton>
         
@@ -53,13 +57,9 @@ export  function NavBar(initial) {
   )}
 </PopupState>
       </div>
-      <Link to={"/cart"}>
-      <CartWidget color="inherit">Carrito</CartWidget>
-      </Link>
-         
-          
-                         
-       
+      <Link to={"/cart"}   underline="none">
+      <CartWidget color="inherit" >Carrito</CartWidget>
+      </Link>                        
         </Toolbar>
         
       </AppBar>
