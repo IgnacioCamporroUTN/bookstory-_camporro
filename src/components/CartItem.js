@@ -20,8 +20,6 @@ const{addItem,deleteItem}=useContext(cartContext);
                 ${totalItem(element)}
                 </Typography>
               <Button size="small"onClick={()=>deleteItem(element.item.id)}>Borrar item</Button>
-             
-              
                </CardContent>
            </Box>      
     </Card>

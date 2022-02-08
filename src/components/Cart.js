@@ -7,10 +7,8 @@ import { CartItem } from './CartItem';
 export const Cart = () => {
   const{cart,addItem,clearCart,total} = useContext(cartContext);
    console.log(cart); 
-   
    const totalItem=(element)=>{
     return element.counter * element.item.precio}
-
   return (
     <>
 {cart.length === 0 ?
