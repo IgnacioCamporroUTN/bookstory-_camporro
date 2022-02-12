@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import {ItemDetail} from "./ItemDetail.js";
 import { useParams } from 'react-router-dom';
-import { Item } from "./Item.js";
 import { cartContext } from "../context/CartProvider.js";
+import { getFirestore } from "../firebase/firebase.js";
 
 const ItemDetailContainer = () => {
   const{addToCart}=useContext(cartContext);
@@ -11,12 +11,24 @@ const ItemDetailContainer = () => {
   const[producto, setProducto]= useState({});
 
   useEffect(()=>{
-    fetch("../json/productos.json")
-    .then((res) => res.json())
-    .then((datos) => {
-      setProducto(datos.find((book)=>book.id===id));
-    });
+    const db=getFirestore();
+    const itemCollection = db.collection("Items");
+    const miItem = itemCollection.doc(id);
 
+    miItem.get()
+    .then((doc)=>{
+      if(!doc.exists){
+        console.log("No existe ese producto")
+        return
+      }
+      console.log("Producto encontrado")
+      setProducto({id:doc.id,...doc.data()})
+
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+    
     },[]);
 
    const onAdd =(counter)=>{
@@ -25,7 +37,7 @@ const ItemDetailContainer = () => {
      setAdded(true);
    }
    
-
+console.log(producto)
   return (
     <div>
      

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route, useParams, Link } from "react-router-dom";
+import { getFirestore } from '../firebase/firebase';
 import { Item } from './Item';
 
 export const ItemListContainer = (props) => {
@@ -8,12 +9,27 @@ export const ItemListContainer = (props) => {
 //  const[arrayDeProductos, setArrayDeProductos]= useState([]);
 
 useEffect(()=>{
-    fetch("../json/productos.json")
-    .then((response) => response.json())
-    .then((datos) => {
-      setListadoDeProductos(datos);
-    });
-    },[]);
+  const db=getFirestore();
+  const itemCollection = db.collection("Items")
+
+  
+
+  itemCollection.get()
+  .then((querySnapShot)=>{
+    if(querySnapShot.size==0){
+      console.log("No hay documentos con ese query");
+      return
+    }
+    console.log("Hay documentos");
+    setListadoDeProductos(querySnapShot.docs.map((doc)=>{
+      return {id:doc.id,...doc.data()}
+    }));
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
+},[]);
+console.log(listadoDeProductos)
 
     return ( <div>
         <ul>

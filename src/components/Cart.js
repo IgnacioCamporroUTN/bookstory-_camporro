@@ -24,7 +24,7 @@ export const Cart = () => {
    {cart.map(element =><CartItem key={element.item.id} element={element} totalItem={totalItem} addItem={addItem}/>
     )}
     <Button size="large">
-    <Link to={``}>Pagar total ${total()}</Link>
+    <Link to={"/ticket"}>Pagar total ${total()}</Link>
     </Button>
     <Button size="large" onClick={clearCart}>Limpiar Carrito</Button>
     </div>
